@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/src/AOM.FIPE.API/bin/Debug/net6.0
+/src/AOM.FIPE.API/obj
+/src/AOM.FIPE.WebApp/bin/Debug/net6.0
+/src/AOM.FIPE.WebApp/obj
