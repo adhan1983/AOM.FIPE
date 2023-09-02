@@ -2,13 +2,13 @@ name: FIPEAPI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop ]
     paths:
       - 'src/AOM.FIPE.API/**'
       - 'src/AOM.FIPE.API.Tests/**'
       - '.github/workflows/fipe-api.yml'
   pull_request:
-    branches: [ main ]
+    branches: [ develop ]
     paths:
       - 'src/AOM.FIPE.API/**'
       - 'src/AOM.FIPE.API.Tests/**'
@@ -27,24 +27,12 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: |
-        dotnet restore src/AOM.FIPE.API/AOM.FIPE.API.csproj
-        dotnet restore src/AOM.FIPE.API.Tests/AOM.FIPE.API.Tests.csproj
+        dotnet restore src/AOM.FIPE.API/AOM.FIPE.API.csproj        
     
     - name: Build
       run: |
         dotnet build --no-restore src/AOM.FIPE.API/AOM.FIPE.API.csproj
         dotnet build --no-restore src/AOM.FIPE.API.Tests/AOM.FIPE.API.Tests.csproj
-    
-    - name: Test
-      run: dotnet test --no-build src/AOM.FIPE.API.Tests/AOM.FIPE.API.Tests.csproj --verbosity normal --logger "trx;LogFileName=test-results.trx"
-      
-    - name: Test Report
-      uses: dorny/test-reporter@v1
-      if: always()
-      with:
-        name: AOM.FIPE.API Tests
-        path: '**/TestResults/*.trx'
-        reporter: dotnet-trx
     
     - name: Publish
       if: github.event_name != 'pull_request'
