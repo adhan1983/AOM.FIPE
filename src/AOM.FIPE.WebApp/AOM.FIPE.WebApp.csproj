@@ -4,11 +4,20 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>fd85b474-a30b-4cf5-b5d5-6c95bd1c5181</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="FirebaseAuthentication.net" Version="3.7.1" />
     <PackageReference Include="Refit" Version="6.0.38" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Constants\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AOM.FIPE.FirebaseAuthentication.SDK\AOM.FIPE.FirebaseAuthentication.SDK.csproj" />
   </ItemGroup>
 
 </Project>

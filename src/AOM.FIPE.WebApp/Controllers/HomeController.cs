@@ -15,7 +15,17 @@ namespace AOM.FIPE.WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            
+            var token = HttpContext.Session.GetString("_UserToken");
+
+            if (token != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("SignIn", "Account");
+            }
         }
 
         public IActionResult Privacy()

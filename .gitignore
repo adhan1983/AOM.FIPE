@@ -7,3 +7,6 @@
 /src/AOM.FIPE.API/obj
 /src/AOM.FIPE.WebApp/bin/Debug/net6.0
 /src/AOM.FIPE.WebApp/obj
+/src/AOM.FIPE.FirebaseAuthentication.SDK/obj/Debug/net6.0
+/src/AOM.FIPE.FirebaseAuthentication.SDK/obj
+/src/AOM.FIPE.FirebaseAuthentication.SDK/bin/Debug/net6.0
