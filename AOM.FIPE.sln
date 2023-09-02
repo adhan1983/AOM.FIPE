@@ -13,6 +13,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.WebApp", "1.WebApp", "{3A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.API", "2.API", "{EB9258C7-9B7F-4A05-A4AE-56BAB723F454}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{765C0885-CFDD-4D5A-8741-AEDA41DF8E05}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\fipe-api.yaml = .github\workflows\fipe-api.yaml
+		.github\workflows\fipe-webapp.yaml = .github\workflows\fipe-webapp.yaml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
