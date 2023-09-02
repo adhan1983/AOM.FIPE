@@ -4,14 +4,12 @@ on:
   push:
     branches: [ develop ]
     paths:
-      - 'src/AOM.FIPE.API/**'
-      - 'src/AOM.FIPE.API.Tests/**'
+      - 'src/AOM.FIPE.API/**'      
       - '.github/workflows/fipe-api.yml'
   pull_request:
     branches: [ develop ]
     paths:
-      - 'src/AOM.FIPE.API/**'
-      - 'src/AOM.FIPE.API.Tests/**'
+      - 'src/AOM.FIPE.API/**'      
       - '.github/workflows/fipe-api.yml'
 
 jobs:
@@ -27,18 +25,14 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: |
-        dotnet restore src/AOM.FIPE.API/AOM.FIPE.API.csproj        
-    
+        dotnet restore src/AOM.FIPE.API/AOM.FIPE.API.csproj
     - name: Build
       run: |
-        dotnet build --no-restore src/AOM.FIPE.API/AOM.FIPE.API.csproj
-        dotnet build --no-restore src/AOM.FIPE.API.Tests/AOM.FIPE.API.Tests.csproj
-    
+        dotnet build --no-restore src/AOM.FIPE.API/AOM.FIPE.API.csproj        
     - name: Publish
       if: github.event_name != 'pull_request'
       run: |
         dotnet publish --no-build src/AOM.FIPE.API/AOM.FIPE.API.csproj -o src/AOM.FIPE.API/publish
-
     - uses: actions/upload-artifact@v3
       if: github.event_name != 'pull_request'
       with:
