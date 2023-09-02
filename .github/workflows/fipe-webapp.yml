@@ -2,12 +2,12 @@ name: FIPEWebapp
 
 on:
   push:
-    branches: [ main ]
+    branches: [ develop ]
     paths:
       - 'src/TodoWebapp/**'
       - '.github/workflows/fipe-webapp.yml'
   pull_request:
-    branches: [ main ]
+    branches: [ develop ]
     paths:
       - 'src/AOM.FIPE.WebApp/**'
       - '.github/workflows/fipe-webapp.yml'
