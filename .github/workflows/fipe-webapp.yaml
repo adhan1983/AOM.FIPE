@@ -1,0 +1,43 @@
+name: FIPEWebapp
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'src/TodoWebapp/**'
+      - '.github/workflows/fipe-webapp.yml'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'src/AOM.FIPE.WebApp/**'
+      - '.github/workflows/fipe-webapp.yml'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: |
+        dotnet restore src/AOM.FIPE.WebApp/AOM.FIPE.WebApp.csproj
+    
+    - name: Build
+      run: |
+        dotnet build --no-restore src/AOM.FIPE.WebApp/AOM.FIPE.WebApp.csproj
+    
+    - name: Publish
+      if: github.event_name != 'pull_request'
+      run: |
+        dotnet publish --no-build src/AOM.FIPE.WebApp/AOM.FIPE.WebApp.csproj -o src/AOM.FIPE.WebApp/publish
+
+    - uses: actions/upload-artifact@v3
+      if: github.event_name != 'pull_request'
+      with:
+        name: fipe-webapp
+        path: src/AOM.FIPE.WebApp/publish
