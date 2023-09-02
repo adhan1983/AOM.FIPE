@@ -5,19 +5,13 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9C9BBFB9-F709-4C39-9BB3-8706A0C227E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOM.FIPE.WebApp", "src\AOM.FIPE.WebApp\AOM.FIPE.WebApp.csproj", "{B024EC77-6D5D-4709-8A0B-E76323B5EBC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AOM.FIPE.WebApp", "src\AOM.FIPE.WebApp\AOM.FIPE.WebApp.csproj", "{B024EC77-6D5D-4709-8A0B-E76323B5EBC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AOM.FIPE.API", "src\AOM.FIPE.API\AOM.FIPE.API.csproj", "{9DB973E7-98E3-4EB2-B509-0937059C6210}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AOM.FIPE.API", "src\AOM.FIPE.API\AOM.FIPE.API.csproj", "{9DB973E7-98E3-4EB2-B509-0937059C6210}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1.WebApp", "1.WebApp", "{3A6057D0-2EE1-4C6D-909B-FF4654957080}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2.API", "2.API", "{EB9258C7-9B7F-4A05-A4AE-56BAB723F454}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{765C0885-CFDD-4D5A-8741-AEDA41DF8E05}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\fipe-api.yml = .github\workflows\fipe-api.yml
-		.github\workflows\fipe-webapp.yml = .github\workflows\fipe-webapp.yml
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
