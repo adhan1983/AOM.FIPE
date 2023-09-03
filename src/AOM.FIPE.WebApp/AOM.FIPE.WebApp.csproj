@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Constants\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\AOM.FIPE.FirebaseAuthentication.SDK\AOM.FIPE.FirebaseAuthentication.SDK.csproj" />
   </ItemGroup>
 
