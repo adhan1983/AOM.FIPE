@@ -1,11 +1,13 @@
 ﻿using AOM.FIPE.API.Response.FIPE;
 using AOM.FIPE.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AOM.FIPE.API.Controllers
 {
     [ApiController]
-    [Route("api/fipe")]    
+    [Route("api/fipe")]
+    [Authorize]
     public class FIPEController : ControllerBase
     {
         private readonly IFIPEServices _fipeServices;
@@ -24,9 +26,9 @@ namespace AOM.FIPE.API.Controllers
         [HttpGet("{tipoCar}")]
         public async Task<List<Brand>> Get(string tipoCar)
         {
-            var response = await _fipeServices.GetBrand(tipoCar: tipoCar);
+            var brands = await _fipeServices.GetBrand(tipoCar: tipoCar);
 
-            return response;
+            return brands;
         }
     }
 }

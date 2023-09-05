@@ -1,6 +1,11 @@
-﻿using AOM.FIPE.WebApp.Models;
+﻿using AOM.FIPE.API.Response.FIPE;
+using AOM.FIPE.WebApp.Models;
+using AOM.FIPE.WebApp.Models.Brand;
+using Firebase.Auth;
 using Microsoft.AspNetCore.Mvc;
+using Refit;
 using System.Diagnostics;
+using System.Net;
 
 namespace AOM.FIPE.WebApp.Controllers
 {
@@ -13,14 +18,25 @@ namespace AOM.FIPE.WebApp.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             
             var token = HttpContext.Session.GetString("_UserToken");
 
             if (token != null)
             {
-                return View();
+                IDataService dataService = RestService.For<IDataService>("https://localhost:7088/");
+                
+                var brands = await dataService.Get(token, "carros");
+
+                var response = new BrandResponseViewModel() 
+                {
+                    Total = brands.Count,
+                    
+                    Brands = brands.Select(b => new BrandViewModel() { Nome = b.Nome, Codigo = b.Codigo  }).ToList()                    
+                };
+
+                return View(response);
             }
             else
             {
@@ -38,5 +54,11 @@ namespace AOM.FIPE.WebApp.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+    }
+
+    public interface IDataService
+    {
+        [Get("/api/fipe/{typeOfCar}")]
+        Task<List<Brand>> Get([Authorize("Bearer")] string token, string typeOfCar);
     }
 }

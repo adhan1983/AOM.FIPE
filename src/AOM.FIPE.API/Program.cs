@@ -1,6 +1,6 @@
 using AOM.FIPE.API.Extensions;
-using Microsoft.OpenApi.Models;
-using System.Reflection;
+using AOM.FIPE.API.Extensions.FirebaseAuthentication;
+using FirebaseAdmin;
 
 #region Builder
 
@@ -13,6 +13,10 @@ builder.Services.AddingFIPEExtensions(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddingSwaggerGenExtensions(builder.Configuration);
+
+builder.Services.AddSingleton(FirebaseApp.Create());
+
+builder.Services.AddFirebaseAuthentication();
 
 #endregion
 
@@ -27,6 +31,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

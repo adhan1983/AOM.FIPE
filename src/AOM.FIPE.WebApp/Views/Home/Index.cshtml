@@ -1,4 +1,5 @@
-﻿@{
+﻿@model AOM.FIPE.WebApp.Models.Brand.BrandResponseViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -11,3 +12,13 @@
     <h1 class="display-4">Welcome you have succesfully signed in</h1>
     <a asp-controller="Account" asp-action="LogOut">Sign Out</a>
 </div>
+<p>
+    Total Brands: @Model.Total    
+</p>
+
+<ul>
+    @foreach (var brand in Model.Brands)
+    {
+        <li>@brand.Nome</li>
+    }
+</ul>
