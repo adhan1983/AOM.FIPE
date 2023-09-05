@@ -5,7 +5,7 @@ using Refit;
 
 namespace AOM.FIPE.FirebaseAuthentication.SDK.Extensions
 {
-    public static class AddFirebaseAuthenticationSDKHostBuilderExtensions
+    public static class FirebaseAuthenticationSDKHostBuilderExtensions
     {       
         public static IServiceCollection AddFirebaseAuthenticationSDK(this IServiceCollection services, FirebaseConfiguration firebaseConfiguration)
         {

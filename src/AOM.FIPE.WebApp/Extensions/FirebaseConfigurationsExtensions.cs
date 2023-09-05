@@ -2,7 +2,7 @@
 
 namespace AOM.FIPE.WebApp.Extensions
 {
-    public static class FirebaseConfigurations
+    public static class FirebaseConfigurationsExtensions
     {
         public static FirebaseConfiguration BuildingFirebaseConfigurations(IConfiguration configuration)
         {            

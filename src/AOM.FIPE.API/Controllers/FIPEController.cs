@@ -22,13 +22,16 @@ namespace AOM.FIPE.API.Controllers
         /// Get all brands in accorgind to type Of Vehicle: carros, motos ou caminhoes.
         /// </summary>
         /// <param name="tipoCar"></param>
-        /// <returns></returns>
-        [HttpGet("{tipoCar}")]
-        public async Task<List<Brand>> Get(string tipoCar)
-        {
-            var brands = await _fipeServices.GetBrand(tipoCar: tipoCar);
+        /// <returns></returns>      
 
-            return brands;
+        [HttpGet("{tipoCar}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(List<Brand>))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> Get(string tipoCar)
+        {
+            var response = await _fipeServices.GetBrand(tipoCar: tipoCar);
+
+            return response == null ? NotFound() : Ok(response);
         }
     }
 }

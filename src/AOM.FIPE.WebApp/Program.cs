@@ -1,23 +1,23 @@
 using AOM.FIPE.FirebaseAuthentication.SDK.Extensions;
 using AOM.FIPE.WebApp.Extensions;
+using AOM.FIPE.WebApp.Extensions.Mappers;
+using AOM.FIPE.WebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.Services.AddControllersWithViews();
 
-var firebaseConfigurations = FirebaseConfigurations.BuildingFirebaseConfigurations(builder.Configuration);
+var firebaseConfigurations = FirebaseConfigurationsExtensions.BuildingFirebaseConfigurations(builder.Configuration);
+
 builder.Services.AddFirebaseAuthenticationSDK(firebaseConfigurations);
 
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromSeconds(60);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-});
+builder.Services.AddingAutoMapper();
+
+builder.Services.AddingSessionsExtensions();
+
+builder.Services.AddScoped<IFIPEService, FIPEService>();
 
 var app = builder.Build();
-
 
 
 // Configure the HTTP request pipeline.
